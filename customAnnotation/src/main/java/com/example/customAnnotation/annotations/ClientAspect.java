@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class ClientAspect {
     private static final ThreadLocal<ClientTypeEnum> clientContext = new ThreadLocal<>();
 
-    @Before("@within(clientType) || @annotation(clientType)") // Match @ClientType on class or method
+    @Before("@within(clientType) || @annotation(clientType)")
     public void captureClientType(JoinPoint joinPoint, ClientType clientType) {
         if (clientType != null) {
             clientContext.set(clientType.value());
